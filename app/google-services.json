@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1096621217919",
+    "project_id": "shubhams-em01",
+    "storage_bucket": "shubhams-em01.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1096621217919:android:6cab93c67e459d7c66074a",
+        "android_client_info": {
+          "package_name": "com.expence.em"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1096621217919-i2ekvv22i3hja596euhcu0fr4oglhvpb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.expence.em",
+            "certificate_hash": "d38a78b0d70f12eeb3e53c30de516202b119446d"
+          }
+        },
+        {
+          "client_id": "1096621217919-phnroj97a7iorav5kll44qeviao3hvht.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB--0yiyboPbP34NCuU4AYeu_LrQUETgyg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1096621217919-phnroj97a7iorav5kll44qeviao3hvht.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

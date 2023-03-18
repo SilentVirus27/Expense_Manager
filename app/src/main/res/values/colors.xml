@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="light_background">#FF7A7A7A</color>
+    <color name="red_500">#FFF82A1B</color>
+    <color name="red_200">#F8665C</color>
+    <color name="green_500">#FF04BD0D</color>
+    <color name="gray_500">#FF4E4D4D</color>
+    <color name="gray_200">#737373</color>
+    <color name="text_color">#FF193566</color>
+
+    <color name="one">#FFFD1100</color>
+    <color name="two">#FF0136F1</color>
+    <color name="three">#FFB600D6</color>
+    <color name="yellow">#FFE8DD00</color>
+
+    //Neumorph render issue
+    <color name="neumorph_shadowColorLight">#B5FFFFFF</color>
+    <color name="neumorph_shadowColorDark">#D89A9A9A</color>
+</resources>
