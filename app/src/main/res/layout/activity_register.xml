@@ -103,7 +103,7 @@
                     android:textCursorDrawable="@drawable/cursor" />
             </soup.neumorphism.NeumorphCardView>
             <!--Contact No-->
-           <!-- <soup.neumorphism.NeumorphCardView
+            <soup.neumorphism.NeumorphCardView
                 style="@style/Widget.Neumorph.CardView"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
@@ -122,7 +122,7 @@
                     android:paddingStart="10dp"
                     android:paddingEnd="10dp"
                     android:textCursorDrawable="@drawable/cursor" />
-            </soup.neumorphism.NeumorphCardView>-->
+            </soup.neumorphism.NeumorphCardView>
             <!--Password-->
             <soup.neumorphism.NeumorphCardView
                 style="@style/Widget.Neumorph.CardView"

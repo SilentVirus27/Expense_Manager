@@ -8,8 +8,13 @@
         android:icon="@drawable/delete_image"
         app:showAsAction="always"/>
     <item
+        android:id="@+id/updateExpense"
+        android:title="Delete"
+        android:icon="@drawable/update_image"
+        app:showAsAction="always"/>
+    <!--<item
         android:id="@+id/saveExpense"
         android:title="Save"
         android:icon="@drawable/check_image"
-        app:showAsAction="always"/>
+        app:showAsAction="always"/>-->
 </menu>

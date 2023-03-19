@@ -41,7 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
         register = (Button) findViewById(R.id.register);
         name = findViewById(R.id.et_name);
         email = findViewById(R.id.et_email);
-        /*contactno = findViewById(R.id.et_contactno);*/
+        contactno = findViewById(R.id.et_contactno);
         password = findViewById(R.id.et_password);
     }
 
@@ -72,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
     private void register() {
         mname=name.getText().toString();
         memail=email.getText().toString().trim();
-        /*mcontactno=contactno.getText().toString();*/
+        mcontactno=contactno.getText().toString();
         mpassword=password.getText().toString();
         if (TextUtils.isEmpty(mname)) {
             name.setError("Please Enter Name");
@@ -86,10 +86,10 @@ public class RegisterActivity extends AppCompatActivity {
             email.setError("Enter Valid Email");
             return;
         }
-        /*if (TextUtils.isEmpty(mcontactno)) {
+        if (TextUtils.isEmpty(mcontactno)) {
             contactno.setError("Please Enter Contact");
             return;
-        }*/
+        }
         if (TextUtils.isEmpty(mpassword)) {
             password.setError("Please Enter Password");
             return;
@@ -110,7 +110,7 @@ public class RegisterActivity extends AppCompatActivity {
                  FirebaseUser fuser = FirebaseAuth.getInstance().getCurrentUser();
                  fuser.sendEmailVerification();
                  String uid=FirebaseAuth.getInstance().getCurrentUser().getUid();
-                 User user = new User(mname,memail);
+                 User user = new User(mname,memail,mcontactno);
                  FirebaseDatabase.getInstance().getReference("Users").child(uid).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                      @Override
                      public void onComplete(@NonNull Task<Void> task) {
@@ -119,6 +119,7 @@ public class RegisterActivity extends AppCompatActivity {
                              Switcha = new Intent(getApplicationContext(),LoginActivity.class);
                              Switcha.putExtra("UNAME",mname);
                              Switcha.putExtra("EMAIL",memail);
+                             Switcha.putExtra("Contact",mcontactno);
                              startActivity(Switcha);
                          }else{
                              Toast.makeText(getApplicationContext(), "Registration Failed!", Toast.LENGTH_LONG).show();

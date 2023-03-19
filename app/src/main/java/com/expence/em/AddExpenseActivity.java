@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,6 +15,8 @@ import com.expence.em.databinding.ActivityAddExpenseBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.UUID;
 
@@ -81,6 +84,9 @@ public class AddExpenseActivity extends AppCompatActivity {
             }
             return true;
         }
+        if (id==R.id.updateExpense){
+            updateExpense();
+        }
         if (id==R.id.deleteExpense){
             deleteExpense();
         }
@@ -103,6 +109,10 @@ public class AddExpenseActivity extends AppCompatActivity {
         String note=binding.note.getText().toString();
         String category=binding.category.getText().toString();
 
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String date =dtf.format(now);
         boolean incomeChecked=binding.incomeRadio.isChecked();
         if (incomeChecked){
             type="Income";
@@ -114,7 +124,7 @@ public class AddExpenseActivity extends AppCompatActivity {
             binding.amount.setError("Empty");
             return;
         }
-        ExpenseModel expenseModel=new ExpenseModel(expenseId,note,category,type,Long.parseLong(amount), Calendar.getInstance().getTimeInMillis(),
+        ExpenseModel expenseModel=new ExpenseModel(expenseId,note,category,type,Long.parseLong(amount), date,
                 FirebaseAuth.getInstance().getUid());
 
         FirebaseFirestore
@@ -131,6 +141,7 @@ public class AddExpenseActivity extends AppCompatActivity {
         String amount=binding.amount.getText().toString();
         String note=binding.note.getText().toString();
         String category=binding.category.getText().toString();
+
 
         boolean incomeChecked=binding.incomeRadio.isChecked();
         if (incomeChecked){

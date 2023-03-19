@@ -10,4 +10,6 @@
     <string name="contact_no">Contact No</string>
     <string name="password">Password</string>
     <string name="cancel">Cancel</string>
+    <string name="EM">EM</string>
+    <string name="Logout">Logout</string>
 </resources>

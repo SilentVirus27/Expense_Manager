@@ -1,18 +1,27 @@
 package com.expence.em;
 
 public class User {
-    public String name, email;
+    public String name, email,contact;
 
     public User() {
     }
 
-    public User(String name, String email) {
+    public User(String name, String email,String contact) {
         this.name = name;
         this.email = email;
+        this.contact=contact;
     }
 
     public String getName() {
         return name;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
     public void setName(String name) {

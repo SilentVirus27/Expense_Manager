@@ -8,13 +8,13 @@ public class ExpenseModel implements Serializable {
     private String category;
     private String type;
     private long amount;
-    private long time;
+    private String time;
     private String uid;
 
     public ExpenseModel() {
     }
 
-    public ExpenseModel(String expenseId, String note, String category, String type, long amount, long time, String uid) {
+    public ExpenseModel(String expenseId, String note, String category, String type, long amount, String time, String uid) {
         this.expenseId = expenseId;
         this.note = note;
         this.category = category;
@@ -64,11 +64,11 @@ public class ExpenseModel implements Serializable {
         this.amount = amount;
     }
 
-    public long getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(long time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

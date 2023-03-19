@@ -3,6 +3,7 @@ package com.expence.em;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,6 +22,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -28,13 +34,19 @@ import com.google.type.TimeOfDayOrBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Dashbord extends AppCompatActivity implements OnItemsCLick{
     ActivityDashbordBinding binding;
     private ExpenseAdapter expenseAdapter;
     Intent intent;
+    String UName,CUUID,UEmail,UContact;
     private long income=0,expense=0;
 
+    private void init(){
+        CUUID=FirebaseAuth.getInstance().getUid();
+        UEmail=FirebaseAuth.getInstance().getCurrentUser().getEmail();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,8 +56,8 @@ public class Dashbord extends AppCompatActivity implements OnItemsCLick{
         expenseAdapter=new ExpenseAdapter(this,this);
         binding.recycler.setAdapter(expenseAdapter);
         binding.recycler.setLayoutManager(new LinearLayoutManager(this));
-
-
+        DatabaseReference rootRef =FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        init();
         binding.addIncome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,9 +69,25 @@ public class Dashbord extends AppCompatActivity implements OnItemsCLick{
         binding.addExpense.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 intent = new Intent(getApplicationContext(), AddExpenseActivity.class);
+                intent = new Intent(getApplicationContext(), AddExpenseActivity.class);
                 intent.putExtra("type", "Expense");
                 startActivity(intent);
+            }
+        });
+
+        rootRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Map<String, String> map  = (Map) snapshot.getValue();
+                if(map!=null){
+                    UName=map.get("name");
+                    UContact=map.get("contact");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            Log.e("Error",error.getMessage());
             }
         });
     }
@@ -80,6 +108,18 @@ public class Dashbord extends AppCompatActivity implements OnItemsCLick{
             startActivity(intent);
             return true;
         }
+        if (id==R.id.userProfile){
+
+            Log.w("test Data"," "+CUUID+UName+UEmail+UContact);
+            Intent pintent=new Intent(getApplicationContext(),ProfileActivity.class);
+            pintent.putExtra("CUUID",CUUID);
+            pintent.putExtra("UName",UName);
+            pintent.putExtra("UEmail",UEmail);
+            pintent.putExtra("UContact",UContact);
+            startActivity(pintent);
+            return true;
+        }
+
         return false;
     }
 
@@ -155,7 +195,9 @@ public class Dashbord extends AppCompatActivity implements OnItemsCLick{
             pieEntryList.add(new PieEntry(expense,"Expense"));
             colorsList.add(getResources().getColor(R.color.red_500));
         }
-        PieDataSet pieDataSet=new PieDataSet(pieEntryList,String.valueOf(income-expense));
+        String diff=String.valueOf(income-expense);
+        PieDataSet pieDataSet=new PieDataSet(pieEntryList,String.valueOf("Income: "+income+"-"+" Expense: "+expense+" = "+" Available: "+diff));
+        pieDataSet.setSliceSpace(2);
         pieDataSet.setColors(colorsList);
         pieDataSet.setValueTextColor(getResources().getColor(R.color.white));
         PieData pieDat=new PieData(pieDataSet);
