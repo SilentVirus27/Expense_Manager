@@ -6,7 +6,9 @@ Contribute To make this application better, free, Easy to use.
 register > open verification link in your mailbox > verify 
 Login > Add Income / Add Expense / Update Record's 
 
-![Screenshot_2023-03-18-20-59-05-016_com expence em](https://user-images.githubusercontent.com/93309121/226115461-386664b0-de36-4d81-9451-2fe92f9349ac.jpg){width=50%}
+<img src="[pic1.jpeg](https://user-images.githubusercontent.com/93309121/226115461-386664b0-de36-4d81-9451-2fe92f9349ac.jpg)" width="50%" height="50%" />
+
+![Screenshot_2023-03-18-20-59-05-016_com expence em](https://user-images.githubusercontent.com/93309121/226115461-386664b0-de36-4d81-9451-2fe92f9349ac.jpg)
 
 
 ![Screenshot_2023-03-18-20-58-35-015_com expence em](https://user-images.githubusercontent.com/93309121/226115473-203fe8f5-c516-4458-846c-8493ec65146b.jpg)
